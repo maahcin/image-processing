@@ -22,6 +22,7 @@ def mono(img):
     print("2. Filtracja entropii w zadanym oknie")
     print("3. Zamknięcie elementem linijnym o zadanej długości i nachyleniu")
     print("4. Zmień obrazek (upewnij się że znajduje się w katalogu images)")
+    print("5. Powrót")
     typ = int(input("Wybór: "))
     if typ == 1:
         std = int(input("Podaj odchylenie standardowe: "))
@@ -36,6 +37,8 @@ def mono(img):
     elif typ == 4:
         new_name = input("Podaj nazwę obrazka: ")
         mono(new_name)
+    elif typ == 5:
+        return
     else:
         print("Źle wybrana akcja")
 
@@ -44,17 +47,20 @@ def rgb(img):
     print("Wybierz akcje: ")
     print("1. Wyrównywanie histogramu obrazu do rozkładu Gaussa o zadanym odchyleniu")
     print("2. Filtracja entropii w zadanym oknie")
-    print("3. Zmień obrazek (upewnij się że znajduje się w katalogu images")
+    print("3. Zmień obrazek (upewnij się że znajduje się w katalogu images)")
+    print("4. Powrót")
     typ = int(input("Wybór: "))
     if typ == 1:
         std = int(input("Podaj odchylenie standardowe: "))
         process_image(img, 'rgb', histeq_gauss, std)
     elif typ == 2:
         window = int(input("Podaj wielkość okna: "))
-        process_image(img, 'mono', entropyfilt, window)
+        process_image(img, 'rgb', entropyfilt, window)
     elif typ == 3:
         new_name = input("Podaj nazwę obrazka: ")
         rgb(new_name)
+    elif typ == 4:
+        return
     else:
         print("Źle wybrana akcja")
 
@@ -63,17 +69,20 @@ def binary(img):
     print("Wybierz akcje: ")
     print("1. Zamknięcie elementem linijnym o zadanej długości i nachyleniu")
     print("2. Etykietowanie")
-    print("3. Zmień obrazek (upewnij się że znajduje się w katalogu images")
+    print("3. Zmień obrazek (upewnij się że znajduje się w katalogu images)")
+    print("4. Powrót")
     typ = int(input("Wybór: "))
     if typ == 1:
         length = int(input("Podaj długość elementu: "))
         angle = int(input("Podaj kąt: "))
-        process_image(img, 'mono', imclose, length, angle)
+        process_image(img, 'binary', imclose, length, angle)
     elif typ == 2:
         process_image(img, 'binary', bwlabel)
     elif typ == 3:
         new_name = input("Podaj nazwę obrazka: ")
         rgb(new_name)
+    elif typ == 3:
+        return
     else:
         print("Źle wybrana akcja")
 
